@@ -63,7 +63,7 @@ nav .navbar .menu li{
 .navbar .menu a{
   font-size: 18px;
   font-weight: 500;
-  color: #0E2431;
+  color: #4070f4;
   padding: 6px 0;
   transition: all 0.4s ease;
 }
@@ -128,10 +128,10 @@ nav.sticky .menu-btn{
 }
 .home .text-one{
   font-size: 25px;
-  color: #0E2431;
+  color: #0b0b0b;
 }
 .home .text-two{
-  color: #0E2431;
+  color: #0b0b0b;
   font-size: 75px;
   font-weight: 600;
   margin-left: -3px;
