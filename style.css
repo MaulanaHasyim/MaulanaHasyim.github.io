@@ -111,7 +111,7 @@ nav.sticky .menu-btn{
 .home{
   height: 100vh;
   width: 100%;
-  background: url("images/a.png") no-repeat;
+  background: url(images/a.png) no-repeat;
   background-size: cover;
   background-position: top;
   background-attachment: fixed;
@@ -344,7 +344,7 @@ section .button button:hover{
 .boxes .box:hover .icon{
   background-color: #fff;
   color: #4070f4;
-}
+}jpg
 .services .boxes .box:hover .topic,
 .services .boxes .box:hover p{
   color: #0E2431;
@@ -354,6 +354,7 @@ section .button button:hover{
 .services .boxes .box:hover p{
   color: #fff;
 }
+
 /* Contact Me CSS */
 .contact{
   background: #F0F8FF;
