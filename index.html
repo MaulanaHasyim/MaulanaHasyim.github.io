@@ -55,10 +55,6 @@
   .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
   a{color:inherit}
 
-  /* cursor glow follower */
-  #cursor-glow{position:fixed;width:380px;height:380px;border-radius:50%;pointer-events:none;z-index:0;
-    background:radial-gradient(circle,var(--glow),transparent 65%);opacity:0;transition:opacity .4s;mix-blend-mode:screen;transform:translate(-50%,-50%)}
-
   /* nav */
   nav{position:sticky;top:0;z-index:50;background:rgba(12,17,24,.7);backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid var(--line)}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
@@ -197,7 +193,6 @@
 </style>
 </head>
 <body>
-<div id="cursor-glow"></div>
 
 <nav>
   <div class="wrap nav-inner">
@@ -393,17 +388,6 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i%4*60)+'ms'; io.observe(el); });
-
-  // cursor glow (desktop only)
-  const glow=document.getElementById('cursor-glow');
-  if(window.matchMedia('(pointer:fine)').matches){
-    window.addEventListener('mousemove',e=>{
-      glow.style.opacity='.5';
-      glow.style.left=e.clientX+'px';
-      glow.style.top=e.clientY+'px';
-    });
-    document.addEventListener('mouseleave',()=>glow.style.opacity='0');
-  }
 
   // project spotlight follows cursor
   document.querySelectorAll('.project').forEach(card=>{
