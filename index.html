@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maulana Hasyim — Data & Business Analyst</title>
+<meta name="description" content="Maulana Hasyim — Data Analyst & IT Business Analyst. Power BI, Tableau, SQL, Python, BPMN. Membangun dashboard dan memodelkan proses bisnis untuk organisasi enterprise.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fafaf7;
+    --ink:#16181d;
+    --muted:#6c6f78;
+    --line:#e7e6e0;
+    --accent:#1f5c4d;
+    --accent-2:#c8742f;
+    --accent-soft:#ecf2ef;
+    --card:#ffffff;
+    --display:'Fraunces',Georgia,serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.62;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:0 28px}
+  a{color:inherit}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(250,250,247,.82);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:var(--mono);font-size:.92rem;font-weight:500;letter-spacing:-.01em}
+  .brand b{color:var(--accent);font-weight:500}
+  .nav-links{display:flex;gap:30px}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .18s}
+  .nav-links a:hover{color:var(--ink)}
+
+  /* hero */
+  header{padding:88px 0 76px;border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:center}
+  .eyebrow{font-family:var(--mono);font-size:.78rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:22px}
+  h1{font-family:var(--display);font-size:clamp(2.4rem,5.2vw,3.7rem);font-weight:500;line-height:1.04;letter-spacing:-.02em;margin-bottom:24px}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lead{font-size:1.1rem;color:var(--muted);max-width:520px;margin-bottom:30px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.86rem;text-decoration:none;padding:11px 20px;border-radius:8px;transition:all .18s}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#16463a}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .hero-photo{position:relative}
+  .hero-photo img{width:100%;border-radius:14px;display:block;filter:grayscale(.12)}
+  .hero-photo::after{content:"";position:absolute;inset:0;border-radius:14px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}
+  .photo-frame{position:absolute;inset:14px -14px -14px 14px;border:1.5px solid var(--accent);border-radius:14px;z-index:-1}
+
+  /* sections */
+  section{padding:76px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:42px}
+  .sec-num{font-family:var(--mono);font-size:.82rem;color:var(--accent)}
+  .sec-head h2{font-family:var(--display);font-size:1.7rem;font-weight:500;letter-spacing:-.01em}
+
+  .about p{font-size:1.08rem;color:#33363d;max-width:680px;margin-bottom:18px}
+  .about .meta{display:flex;gap:40px;flex-wrap:wrap;margin-top:30px}
+  .about .meta div .k{font-family:var(--mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .about .meta div .v{font-size:1.02rem;font-weight:500}
+
+  /* timeline */
+  .tl{position:relative;padding-left:30px}
+  .tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:1.5px;background:var(--line)}
+  .job{position:relative;padding-bottom:34px}
+  .job:last-child{padding-bottom:0}
+  .job::before{content:"";position:absolute;left:-30px;top:7px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+  .job .when{font-family:var(--mono);font-size:.78rem;color:var(--accent-2);margin-bottom:5px}
+  .job h3{font-size:1.08rem;font-weight:600;letter-spacing:-.01em}
+  .job .org{font-size:.96rem;color:var(--muted);margin-bottom:10px}
+  .job p{font-size:.96rem;color:#44474e;max-width:680px}
+
+  /* projects */
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .project{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:24px;transition:border-color .2s,transform .2s,box-shadow .2s}
+  .project:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 30px rgba(31,92,77,.09)}
+  .project .cat{font-family:var(--mono);font-size:.72rem;color:var(--accent-2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+  .project h3{font-size:1.1rem;font-weight:600;letter-spacing:-.01em;margin-bottom:9px;line-height:1.3}
+  .project p{font-size:.92rem;color:var(--muted);margin-bottom:16px;flex-grow:1}
+  .tags{display:flex;flex-wrap:wrap;gap:7px}
+  .tag{font-family:var(--mono);font-size:.72rem;color:var(--accent);background:var(--accent-soft);padding:4px 10px;border-radius:999px}
+
+  /* skills */
+  .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:30px}
+  .skill-col h3{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:15px}
+  .skill-col ul{list-style:none}
+  .skill-col li{font-size:.95rem;padding:7px 0;border-bottom:1px dashed var(--line);color:#3a3d44}
+  .skill-col li:last-child{border-bottom:none}
+
+  /* certs */
+  .cert-list{columns:2;column-gap:40px}
+  .cert-list .c{break-inside:avoid;padding:9px 0;border-bottom:1px dashed var(--line);font-size:.93rem}
+  .cert-list .c span{color:var(--muted);font-family:var(--mono);font-size:.78rem}
+  .cert-more{margin-top:22px}
+
+  /* contact */
+  .contact .lead2{font-size:1.15rem;color:#33363d;max-width:560px;margin-bottom:30px}
+  .links{display:flex;flex-wrap:wrap;gap:12px}
+  .links a{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.9rem;text-decoration:none;border:1px solid var(--line);border-radius:9px;padding:11px 18px;transition:all .18s}
+  .links a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);transform:translateY(-2px)}
+
+  footer{padding:40px 0;text-align:center;color:var(--muted);font-size:.84rem}
+  footer .mono{font-family:var(--mono)}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+  @media(max-width:760px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero-photo{max-width:300px;order:-1}
+    .proj-grid{grid-template-columns:1fr}
+    .cert-list{columns:1}
+    .nav-links{display:none}
+    header{padding:56px 0 60px}
+    section{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <div class="brand">maulana<b>.hasyim</b></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow reveal">Data &amp; Business Analyst</div>
+      <h1 class="reveal">Mengubah data kompleks jadi <em>keputusan</em> yang menggerakkan bisnis.</h1>
+      <p class="lead reveal">Halo, saya Maulana Hasyim. Saya membangun dashboard, memodelkan proses bisnis, dan menghasilkan insight yang bisa ditindaklanjuti untuk organisasi enterprise seperti Pertamina dan BRI.</p>
+      <div class="hero-cta reveal">
+        <a class="btn btn-primary" href="#projects">Lihat Project →</a>
+        <a class="btn btn-ghost" href="#contact">Hubungi Saya</a>
+      </div>
+    </div>
+    <div class="hero-photo reveal">
+      <img src="profile.jpg" alt="Foto Maulana Hasyim">
+      <div class="photo-frame"></div>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">01</span><h2>Tentang Saya</h2></div>
+    <p class="reveal">Sarjana Teknik Informatika dari UIN Syarif Hidayatullah Jakarta (IPK 3.61/4.00), dengan spesialisasi di Data Analysis, Data Visualization, dan IT Business Analysis.</p>
+    <p class="reveal">Saya berpengalaman membangun dashboard, melakukan business process modeling, dan menyampaikan insight strategis. Fokus saya adalah mengubah dataset yang rumit menjadi solusi yang mendukung pengambilan keputusan dan pertumbuhan bisnis — menggunakan Power BI, Tableau, SQL, Python, dan tools BPMN.</p>
+    <div class="meta reveal">
+      <div><div class="k">Pendidikan</div><div class="v">S1 Teknik Informatika · UIN Jakarta</div></div>
+      <div><div class="k">IPK</div><div class="v">3.61 / 4.00</div></div>
+      <div><div class="k">Lokasi</div><div class="v">Tangerang Selatan, ID</div></div>
+      <div><div class="k">Bahasa</div><div class="v">Indonesia · English</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">02</span><h2>Pengalaman</h2></div>
+    <div class="tl">
+      <div class="job reveal">
+        <div class="when">Jul 2025 — Okt 2025</div>
+        <h3>Freelance Business Process Analyst</h3>
+        <div class="org">PT Bank Rakyat Indonesia (Persero) Tbk</div>
+        <p>Berkontribusi pada business process leveling untuk alur kerja agreement, memetakan proses secara detail di Excel & Visio, serta memverifikasi flowchart BPMN di ARIS Tools — memvalidasi notasi, risiko, dan elemen kontrol sesuai SOP perusahaan.</p>
+      </div>
+      <div class="job reveal">
+        <div class="when">Apr 2024 — Jan 2025</div>
+        <h3>Data &amp; Business Analyst Intern</h3>
+        <div class="org">PT Bank Rakyat Indonesia (Persero) Tbk</div>
+        <p>Merancang dashboard interaktif dengan Tableau, dan membuat 250+ flowchart proses bisnis (micro credit, bank guarantee, digital lending, dll) memakai ARIS BPMN — lengkap dengan elemen risiko, kontrol, dokumen input-output, dan keterlibatan aplikasi IT, serta Value Added Chain Diagram untuk leveling proses.</p>
+      </div>
+      <div class="job reveal">
+        <div class="when">Mar 2022 — Sep 2022</div>
+        <h3>Data Analyst Intern</h3>
+        <div class="org">PT Pertamina (Persero)</div>
+        <p>Mendukung tim Technology &amp; Development pada Shared Services Project: merancang dan membangun dashboard Power BI bersumber dari Excel dan SQL Server untuk Asset Management, serta menyusun dokumen Scope of Project dan User Acceptance Testing.</p>
+      </div>
+      <div class="job reveal">
+        <div class="when">Mar 2021 — Jun 2021</div>
+        <h3>Web Developer Intern</h3>
+        <div class="org">Badan Nasional Pengelola Perbatasan (BNPP)</div>
+        <p>Mengembangkan fitur website bnpp.go.id dengan PHP, HTML, CSS, JavaScript dan MySQL, serta melakukan usability testing yang membantu tim mendesain ulang situs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2>Project Pilihan</h2></div>
+    <div class="proj-grid">
+
+      <div class="project reveal">
+        <div class="cat">PT Pertamina</div>
+        <h3>Housing Facility Services Dashboard</h3>
+        <p>Dashboard untuk menganalisis service request, incident management, dan inventaris RDP di seluruh region Pertamina — mengolah 10.000+ request dan 78.000+ item inventaris.</p>
+        <div class="tags"><span class="tag">Power BI</span><span class="tag">SQL Server</span><span class="tag">Excel</span></div>
+      </div>
+
+      <div class="project reveal">
+        <div class="cat">Thesis · Machine Learning</div>
+        <h3>Klasifikasi Teks Potensi Bunuh Diri di Media Sosial</h3>
+        <p>Komparasi Multinomial Naive Bayes vs Decision Tree dengan hyperparameter tuning untuk klasifikasi teks, mencapai akurasi hingga 90% (AUC 0.95).</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">NLP</span></div>
+      </div>
+
+      <div class="project reveal">
+        <div class="cat">BRI Internship</div>
+        <h3>Dashboard Infografis Akses BRIPEDIA</h3>
+        <p>Visualisasi tingkat akses platform pembelajaran BRIPEDIA per regional office se-Indonesia, dengan ranking bulanan dan analisis tren naik/turun.</p>
+        <div class="tags"><span class="tag">Tableau</span><span class="tag">Excel</span><span class="tag">Canva</span></div>
+      </div>
+
+      <div class="project reveal">
+        <div class="cat">Dicoding · ID Camp 2025</div>
+        <h3>Customer Cluster Analysis</h3>
+        <p>Segmentasi nasabah dengan K-Means clustering, menentukan jumlah cluster optimal lewat silhouette score dan membangun model klasifikasi dengan akurasi 100%.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Google Colab</span><span class="tag">K-Means</span></div>
+      </div>
+
+      <div class="project reveal">
+        <div class="cat">Data Project</div>
+        <h3>Dashboard Filter Lowongan Magang KEMNAKER 2025</h3>
+        <p>Tools interaktif untuk memfilter 37.800+ lowongan magang berdasarkan provinsi, posisi, dan jurusan — lengkap dengan analisis jurusan & level pendidikan paling dicari.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Tableau</span><span class="tag">Excel</span></div>
+      </div>
+
+      <div class="project reveal">
+        <div class="cat">Business Process Modeling</div>
+        <h3>250+ BPMN Banking Flowcharts</h3>
+        <p>Pemodelan proses bisnis perbankan (micro credit, bank guarantee, digital lending) memakai ARIS BPMN dan Microsoft Visio, sesuai SOP Bank BRI.</p>
+        <div class="tags"><span class="tag">ARIS BPMN</span><span class="tag">Visio</span><span class="tag">VACD</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">04</span><h2>Keahlian</h2></div>
+    <div class="skill-grid">
+      <div class="skill-col reveal">
+        <h3>Data Viz &amp; BI</h3>
+        <ul><li>Microsoft Power BI</li><li>Tableau</li><li>Google Looker Studio</li><li>Google BigQuery</li></ul>
+      </div>
+      <div class="skill-col reveal">
+        <h3>Programming &amp; DB</h3>
+        <ul><li>Python</li><li>SQL</li><li>MySQL</li><li>Microsoft SQL Server</li></ul>
+      </div>
+      <div class="skill-col reveal">
+        <h3>Business Process</h3>
+        <ul><li>ARIS BPMN</li><li>Microsoft Visio</li><li>draw.io</li><li>Business Analysis</li></ul>
+      </div>
+      <div class="skill-col reveal">
+        <h3>Office &amp; Design</h3>
+        <ul><li>Microsoft Office</li><li>Figma</li><li>Adobe Photoshop</li><li>Canva</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">05</span><h2>Sertifikasi</h2></div>
+    <div class="cert-list reveal">
+      <div class="c">AWS AI Academy — Cloud &amp; Gen AI Basics <span>· AWS × Dicoding, 2026</span></div>
+      <div class="c">Data Scientist Learning Path <span>· ID Camp × Dicoding, 2026</span></div>
+      <div class="c">Analisis Data Excel <span>· Microsoft × Jobstreet, 2026</span></div>
+      <div class="c">Complete Guide to Power BI <span>· Microsoft Press, 2025</span></div>
+      <div class="c">Learning SQL Programming <span>· NASBA, 2025</span></div>
+      <div class="c">Business Analysis: Process Modeling <span>· IIBA®, 2025</span></div>
+      <div class="c">Business Analysis Foundations <span>· PMI, 2025</span></div>
+      <div class="c">Certified Specialist Data Visualization <span>· Cybertrend, 2020</span></div>
+    </div>
+    <div class="cert-more reveal">
+      <a class="btn btn-ghost" href="https://drive.google.com/file/d/1uT5pF2qTJOQE0ujTQ2O_FYragBK__mWJ/view?usp=sharing" target="_blank" rel="noopener">Lihat semua sertifikat →</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">06</span><h2>Mari Terhubung</h2></div>
+    <p class="lead2 reveal">Tertarik berkolaborasi, punya peluang kerja, atau sekadar ingin diskusi soal data? Saya senang mendengar kabar dari Anda.</p>
+    <div class="links reveal">
+      <a href="mailto:maulana23.mh@gmail.com">✉ Email</a>
+      <a href="https://www.linkedin.com/in/maulana-hasyim/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/MaulanaHasyim" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.instagram.com/mlnhsym/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://twitter.com/MaulanaHasyim/" target="_blank" rel="noopener">Twitter / X</a>
+      <a href="tel:+6281385363458">☎ +62 813-8536-3458</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">© <span id="year"></span> Maulana Hasyim</span> · Dibuat dengan data &amp; sedikit kopi
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i%5*55)+'ms'; io.observe(el); });
+</script>
+</body>
+</html>
